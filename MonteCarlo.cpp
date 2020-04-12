@@ -102,6 +102,8 @@ void MonteCarlo::PrintBatches()
 		//std::cout << fileName << std::endl;
 
 		isGoodBatch = true;
+	
+
 
 		int num1 = std::rand() % 100;
 		if(num1 > 0 && num1 <= percentBadBatches)
@@ -124,6 +126,7 @@ void MonteCarlo::PrintBatches()
 			}
 			else
 			{
+
 				int num2 = std::rand() % 100;
 				if(num2 > 0 && num2 <= percentBadness)
 				{

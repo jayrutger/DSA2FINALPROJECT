@@ -5,6 +5,7 @@
 
 int main(){
 
+	std::srand(time(NULL));
 	std::ifstream file("t1.txt");
 	std::ifstream file2("t2.txt");
 	std::ifstream file3("t3.txt");

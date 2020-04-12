@@ -9,6 +9,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <math.h>
+#include <time.h>
 
 class MonteCarlo{
 
