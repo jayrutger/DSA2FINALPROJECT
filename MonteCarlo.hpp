@@ -22,7 +22,7 @@ class MonteCarlo{
 		MonteCarlo(std::string numOfBatch,std::string numItems, std::string percentBadBatches, std::string percentBadness);
 		void PrintBatches();
 		void DeleteBatches();
-
+		void CheckBatches();
 
 
 

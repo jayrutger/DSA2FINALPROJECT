@@ -14,13 +14,25 @@ int main(){
 	std::string line2[5];
 	std::string line3[5];
 	std::string line4[5];
-	for(int i=0; i < 5; i++){
+//	for(int i=0; i < 5; i++){
 
-		std::getline(file,line[i]);	
-		std::cout << line[i] << std::endl;
+		std::getline(file,line[0]);	
+		std::cout <<  "Number of batches of items: " << line[0] << std::endl;
+//	} 
 
-	}
 
+		std::getline(file,line[1]);	
+		std::cout <<  "Number of items in each batch: " << line[1] << std::endl;
+
+		std::getline(file,line[2]);	
+		std::cout <<  "Percentage of batches containing bad items: " << line[2] << std::endl;
+
+		std::getline(file,line[3]);	
+		std::cout <<  "Percentage of items that are bad in a set: " << line[3] << std::endl;
+	
+		std::getline(file,line[4]);	
+		std::cout <<  "Items sampled from each set: " << line[4] << std::endl;
+	
 	MonteCarlo obj1(line[0],line[1],line[2],line[3]);
 	
 	obj1.PrintBatches();

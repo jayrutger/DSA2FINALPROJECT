@@ -42,6 +42,13 @@ void MonteCarlo::DeleteBatches()
 */
 }
 
+void MonteCarlo::CheckBatches()
+{
+
+
+
+}
+
 
 void MonteCarlo::PrintBatches()
 {
@@ -49,7 +56,8 @@ void MonteCarlo::PrintBatches()
 	
 	bool isGoodBatch;
 	bool isGoodChip;
-		
+	int numBad = 0;		
+
 
 	for(int i=0; i<this->numOfBatch; i++)
 	{
@@ -57,7 +65,7 @@ void MonteCarlo::PrintBatches()
 		std::string fileName = "ds";
 		fileName += std::to_string(i+1);
 		fileName += ".txt";
-		std::cout << fileName << std::endl;
+		//std::cout << fileName << std::endl;
 
 		isGoodBatch = true;
 
@@ -65,6 +73,8 @@ void MonteCarlo::PrintBatches()
 		if(num1 > 0 && num1 <= percentBadBatches)
 		{
 			isGoodBatch = false;
+			std::cout << "Create bad set batch #\t" << i;
+
 		}	
 		std::ofstream myFile;
 		myFile.open(fileName);
@@ -92,8 +102,14 @@ void MonteCarlo::PrintBatches()
 				else
 				{
 					myFile << "b" << std::endl;
+					numBad++;
 				}
 			}
+		}
+		if(isGoodBatch == false)
+		{
+			std::cout << "\ttotBad = " << numBad << "\ttotal = " << numItems << "\tBad Percentage: " << percentBadness << std::endl;
+		
 		}
 		myFile.close();
 	}
