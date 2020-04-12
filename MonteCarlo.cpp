@@ -79,7 +79,7 @@ void MonteCarlo::CheckBatches()
 	std::cout << "\nBase = " << num << std::endl;
 	std::cout << "Exponent = " << numPicked << std::endl;
 	std::cout << "P(failure to detect bad batch) = " << pow(num, numPicked) << std::endl;
-	std::cout << "Percentage of bad batches actually detected = " << 100*(1.00*numBadBatchesDetected/numTotalBadBatches) << "%" << std::endl;
+	std::cout << "Percentage of bad batches actually detected = " << 100*(1.00*numBadBatchesDetected/numTotalBadBatches) << "%\n" << std::endl;
 }
 
 
