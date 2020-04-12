@@ -8,6 +8,7 @@
 #include <sstream>
 #include <fstream>
 #include <cstdlib>
+#include <math.h>
 
 class MonteCarlo{
 
@@ -17,9 +18,12 @@ class MonteCarlo{
 		int numItems;
 		int percentBadBatches;
 		int percentBadness;
+		int numPicked;
+		int numTotalBadBatches;
+
 
 	public:
-		MonteCarlo(std::string numOfBatch,std::string numItems, std::string percentBadBatches, std::string percentBadness);
+		MonteCarlo(std::string numOfBatch,std::string numItems, std::string percentBadBatches, std::string percentBadness, std::string numPicked);
 		void PrintBatches();
 		void DeleteBatches();
 		void CheckBatches();

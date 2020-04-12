@@ -1,6 +1,6 @@
 #include "MonteCarlo.hpp"
 
-MonteCarlo::MonteCarlo(std::string numOfBatch, std::string numItems,std::string percentBadBatches, std::string percentBadness)
+MonteCarlo::MonteCarlo(std::string numOfBatch, std::string numItems,std::string percentBadBatches, std::string percentBadness, std::string numPicked)
 {
 	std::stringstream ss(numOfBatch);
 	int num1;
@@ -21,6 +21,11 @@ MonteCarlo::MonteCarlo(std::string numOfBatch, std::string numItems,std::string 
 	int num4;
 	ss4 >> num4;
 	this->percentBadness = num4;	
+
+	std::stringstream ss5(numPicked);
+	int num5;
+	ss5 >> num5;
+	this->numPicked = num5;	
 }
 
 void MonteCarlo::DeleteBatches()
@@ -45,8 +50,36 @@ void MonteCarlo::DeleteBatches()
 void MonteCarlo::CheckBatches()
 {
 
+	int numBadBatchesDetected = 0;
+	std::cout << "\nAnalyzing Data Sets:\n";
 
+	for(int i=0; i<this->numOfBatch; i++)
+	{
 
+		std::string fileName = "ds";
+		fileName += std::to_string(i+1);
+		fileName += ".txt";
+
+		std::ifstream ifile(fileName);
+
+		std::string line;
+		for(int j=0;j<this->numPicked;j++)
+		{
+			std::getline(ifile,line);
+			if(line == "b")
+			{
+				std::cout << "batch\t#" << i << " is bad" << std::endl;
+				numBadBatchesDetected++;
+				break;
+			}
+		}
+	}
+
+	double num = 1.00-(percentBadness/100.0);
+	std::cout << "\nBase = " << num << std::endl;
+	std::cout << "Exponent = " << numPicked << std::endl;
+	std::cout << "P(failure to detect bad batch) = " << pow(num, numPicked) << std::endl;
+	std::cout << "Percentage of bad batches actually detected = " << 100*(1.00*numBadBatchesDetected/numTotalBadBatches) << "%" << std::endl;
 }
 
 
@@ -57,7 +90,8 @@ void MonteCarlo::PrintBatches()
 	bool isGoodBatch;
 	bool isGoodChip;
 	int numBad = 0;		
-
+	numTotalBadBatches = 0;
+	std::cout << "\nGenerating Data Sets:\n";
 
 	for(int i=0; i<this->numOfBatch; i++)
 	{
@@ -73,6 +107,7 @@ void MonteCarlo::PrintBatches()
 		if(num1 > 0 && num1 <= percentBadBatches)
 		{
 			isGoodBatch = false;
+			numTotalBadBatches++;
 			std::cout << "Create bad set batch #\t" << i;
 
 		}	

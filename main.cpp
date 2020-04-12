@@ -33,10 +33,11 @@ int main(){
 		std::getline(file,line[4]);	
 		std::cout <<  "Items sampled from each set: " << line[4] << std::endl;
 	
-	MonteCarlo obj1(line[0],line[1],line[2],line[3]);
+	MonteCarlo obj1(line[0],line[1],line[2],line[3],line[4]);
 	
 	obj1.PrintBatches();
 
+	obj1.CheckBatches();
 	
 //	obj1.DeleteBatches();
 	
