@@ -24,6 +24,9 @@ int main(){
 	MonteCarlo obj1(line[0],line[1],line[2],line[3]);
 	
 	obj1.PrintBatches();
+
+	
+//	obj1.DeleteBatches();
 	
 /*
 	for(int i=0; i < 5; i++){
