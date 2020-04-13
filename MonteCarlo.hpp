@@ -1,7 +1,6 @@
 #ifndef MONTECARLO_H
 #define MONTECARLO_H
 
-//#include <algorithm>
 #include <stdio.h>
 #include <string>
 #include <iostream>

@@ -68,7 +68,7 @@ void MonteCarlo::CheckBatches()
 			std::getline(ifile,line);
 			if(line == "b")
 			{
-				std::cout << "batch\t#" << i << " is bad" << std::endl;
+				std::cout << "batch\t#" << i+1 << " is bad" << std::endl;
 				numBadBatchesDetected++;
 				break;
 			}
@@ -110,7 +110,7 @@ void MonteCarlo::PrintBatches()
 		{
 			isGoodBatch = false;
 			numTotalBadBatches++;
-			std::cout << "Create bad set batch #\t" << i;
+			std::cout << "Create bad set batch #\t" << i+1;
 
 		}	
 		std::ofstream myFile;
@@ -149,6 +149,7 @@ void MonteCarlo::PrintBatches()
 			std::cout << "\ttotBad = " << numBad << "\ttotal = " << numItems << "\tBad Percentage: " << percentBadness << std::endl;
 		
 		}
+		numBad=0;
 		myFile.close();
 	}
 

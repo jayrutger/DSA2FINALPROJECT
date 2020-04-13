@@ -2,11 +2,12 @@
 #include <fstream>
 #include <string>
 #include "MonteCarlo.hpp"
+#include "MCPartTwo.hpp"
 
 int main(){
 
 	std::srand(time(NULL));
-	std::ifstream file("t1.txt");
+/*	std::ifstream file("t1.txt");
 	std::ifstream file2("t2.txt");
 	std::ifstream file3("t3.txt");
 	std::ifstream file4("t4.txt");
@@ -36,7 +37,6 @@ int main(){
 	obj1.PrintBatches();
 
 	obj1.CheckBatches();
-	
 
 
 
@@ -61,9 +61,6 @@ int main(){
 	obj2.PrintBatches();
 
 	obj2.CheckBatches();
-
-
-
 
 
 
@@ -94,10 +91,6 @@ int main(){
 
 
 
-
-
-
-
 		std::getline(file4,line4[0]);	
 		std::cout <<  "Number of batches of items: " << line4[0] << std::endl;
 
@@ -119,6 +112,11 @@ int main(){
 
 	obj4.CheckBatches();
 
+*/
+
+
+	MCPartTwo bog;
+	bog.RunAnalyticalModel();
 
 
 
@@ -128,30 +126,12 @@ int main(){
 
 
 
-/*
-	for(int i=0; i < 5; i++){
 
-		std::getline(file2,line2[i]);	
-		std::cout << line2[i] << std::endl;
-	}
 
-	MonteCarlo obj2(line2[0],line2[1],line2[2],line2[3]);
-	
-	for(int i=0; i < 5; i++){
 
-		std::getline(file3,line3[i]);	
-		std::cout << line3[i] << std::endl;
-	}
 
-	MonteCarlo obj3(line3[0],line3[1],line3[2],line3[3]);
-	
-	for(int i=0; i < 5; i++){
 
-		std::getline(file4,line4[i]);	
-		std::cout << line4[i] << std::endl;
-	}
 
-	MonteCarlo obj4(line4[0],line4[1],line4[2],line4[3]);
-*/	
+
 	return 0;
 }
