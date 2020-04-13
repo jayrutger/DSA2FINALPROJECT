@@ -5,9 +5,7 @@ MCPartTwo::MCPartTwo()
 
 	std::ifstream file("readings.txt");
 
-//	std::vector <std::string> line;
-	std::vector <std::string> firsthalf;
-	//std::vector <int> numOccurences;
+//	std::vector <std::string> firsthalf;
 
 	std::string l;	
 
@@ -16,20 +14,6 @@ MCPartTwo::MCPartTwo()
 	while(std::getline(file,l))
 	{
 		line.push_back(l);
-	/*	if(i==0)
-		{
-			std::cout << "Simulated Days: ";
-		}
-		else if(i==1)
-		{
-			std::cout << "Number of categories: ";
-		}
-		else if(i==2)
-		{
-			std::cout << "Ranges and occurrences in each range: " << std::endl;
-		}
-		//std::cout << line.at(i) << std::endl;	
-	*/	//std::cout << line.at(i) << std::endl;
 		i++;
 	}
 	for(int i=0;i<line.size();i++)
@@ -49,7 +33,6 @@ MCPartTwo::MCPartTwo()
 		else if(i==line.size()-1)
 		{
 			std::cout << "Units of measurement: ";
-//			std::cout << line.at(i) << std::endl;
 		}
 		
 			std::cout << line.at(i) << std::endl;
@@ -57,8 +40,6 @@ MCPartTwo::MCPartTwo()
 
 	}
 
-
-//	std::cout << line.at(3);
 
 	for(int i=2;i<line.size()-1;i++)
 	{
@@ -76,7 +57,7 @@ MCPartTwo::MCPartTwo()
 		std::getline(ss2,firstNum,'-');
 		std::getline(ss2,secondNum,'-');
 
-		std::cout << firstNum << std::endl;	
+		//std::cout << firstNum << std::endl;	
 		//std::cout << secondNum << std::endl;//with colon
 		
 		secondNum.erase(secondNum.end()-1);
@@ -85,7 +66,7 @@ MCPartTwo::MCPartTwo()
 		int num1 = std::stoi(firstNum);
 		int num2 = std::stoi(secondNum);
 
-		std::cout << secondNum << std::endl;
+		//std::cout << secondNum << std::endl;
 		this->begRange.push_back(num1);
 		this->endRange.push_back(num2);
 
@@ -112,6 +93,19 @@ void MCPartTwo::RunAnalyticalModel()
 		finalSum += (((begRange.at(i) + endRange.at(i))/2) * perc);
 	}
 
-	std::cout << finalSum << std::endl;
+	int leftSum;
+	int rightSum;
+	for(int i=0;i<begRange.size();i++)
+	{
+		if(finalSum >= begRange.at(i) && finalSum <= endRange.at(i))
+		{
+			leftSum = begRange.at(i);
+			rightSum = endRange.at(i);
+		}	
+	
+
+	}
+
+	std::cout << "Analytical model:" << finalSum <<  ". Expected value in the " << leftSum << "-" << rightSum << "/" << line.at(line.size()-1) << " range." << std::endl;
 
 }
