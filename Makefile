@@ -4,7 +4,7 @@ CXXFLAGS = -g -std=c++11 -Wall -ftest-coverage -fprofile-arcs
 SRCS = $(wildcard *.hpp)
 OBJECTS = $(SRCS:.hpp=.o)
 
-main: $(OBJECTS) main.o MonteCarlo.o
+main: $(OBJECTS) main.o MonteCarlo.o MCPartTwo.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:
