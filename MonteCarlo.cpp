@@ -28,24 +28,6 @@ MonteCarlo::MonteCarlo(std::string numOfBatch, std::string numItems,std::string 
 	this->numPicked = num5;	
 }
 
-void MonteCarlo::DeleteBatches()
-{
-/*
-	for(int i=0; i<this->numOfBatch; i++)
-	{
-		std::string fileName = "ds";
-		fileName += std::to_string(i);
-		fileName += ".txt";
-	//	std::cout << fileName << std::endl;
-
-		std::remove(fileName);
-
-		//std::ofstream myFile;
-		//myFile.open(fileName);
-		//myFile.close();
-	}
-*/
-}
 
 void MonteCarlo::CheckBatches()
 {

@@ -18,6 +18,7 @@ int main(){
 	std::string line4[5];
 
 
+	std::cout << "\nSimulation 1: " << std::endl;
 	
 		std::getline(file,line[0]);	
 		std::cout <<  "Number of batches of items: " << line[0] << std::endl;
@@ -44,6 +45,7 @@ int main(){
 
 
 
+	std::cout << "\nSimulation 2: " << std::endl;
 
 		std::getline(file2,line2[0]);	
 		std::cout <<  "Number of batches of items: " << line2[0] << std::endl;
@@ -68,6 +70,7 @@ int main(){
 
 	obj2.CheckBatches();
 
+	std::cout << "\nSimulation 3: " << std::endl;
 
 		std::getline(file3,line3[0]);	
 		std::cout <<  "Number of batches of items: " << line3[0] << std::endl;
@@ -92,6 +95,8 @@ int main(){
 
 	obj3.CheckBatches();
 
+
+	std::cout << "\nSimulation 4: " << std::endl;
 
 		std::getline(file4,line4[0]);	
 		std::cout <<  "Number of batches of items: " << line4[0] << std::endl;

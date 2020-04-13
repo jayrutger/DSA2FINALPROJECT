@@ -192,7 +192,7 @@ void MCPartTwo::RunSimulationModel()
 
 
 
-	std::cout << "Simulation: " << finalSum << ". Expected value is in the " << leftSide << "-" << rightSide << "/" << dataType << std::endl;
+	std::cout << "Simulation: " << finalSum << ". Expected value is in the " << leftSide << "-" << rightSide << "/" << dataType << " range." << std::endl;
 
 
 }

@@ -25,7 +25,6 @@ class MonteCarlo{
 	public:
 		MonteCarlo(std::string numOfBatch,std::string numItems, std::string percentBadBatches, std::string percentBadness, std::string numPicked);
 		void PrintBatches();
-		void DeleteBatches();
 		void CheckBatches();
 
 
