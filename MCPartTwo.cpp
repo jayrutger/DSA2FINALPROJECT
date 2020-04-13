@@ -108,6 +108,9 @@ void MCPartTwo::RunAnalyticalModel()
 
 	}
 
+	this->leftSide = leftSum;
+	this->rightSide = rightSum;
+	this->dataType = line.at(line.size()-1);
 	std::cout << "Analytical model:" << finalSum <<  ". Expected value in the " << leftSum << "-" << rightSum << "/" << line.at(line.size()-1) << " range." << std::endl;
 
 }
@@ -126,49 +129,70 @@ void MCPartTwo::RunSimulationModel()
 		numTimes.push_back(0);
 	}
 
-		for(int i=0; i<this->numSimulatedDays;i++)
-		{	
-			int numSoFar=0;
-			for(int j=0;j<this->numCategories;j++)
+	for(int i=0; i<this->numSimulatedDays;i++)
+	{	
+		int numSoFar=0;
+		for(int j=0;j<this->numCategories;j++)
+		{
+			int num1 = std::rand() % 100;
+			numSoFar += numOccurences.at(j);
+			if(j==0)//0-2000
 			{
-				int num1 = std::rand() % 100;
-				numSoFar += numOccurences.at(j);
-				if(j==0)//0-2000
+				if(num1 >= 0 && num1 < numSoFar)
 				{
-					if(num1 >= 0 && num1 < numSoFar)
-					{
-						this->simulationIncrements.at(j)++;
-						int num2 = std::rand() % (endRange.at(j) - begRange.at(j)) + begRange.at(j);
-						totalSumForRange.at(j) += num2;
-						numTimes.at(j) += 1;
-					}
-				}
-				else//all other ranges after 0-2000
-				{
-					if(num1 < numSoFar)
-					{
-						
-						this->simulationIncrements.at(j)++;		
-						int num3 = std::rand() % (endRange.at(j) - begRange.at(j)) + begRange.at(j);
-						totalSumForRange.at(j) += num3;			
-						numTimes.at(j) += 1;
-					}
+					this->simulationIncrements.at(j)++;
+					int num2 = std::rand() % (endRange.at(j) - begRange.at(j)) + begRange.at(j);
+					totalSumForRange.at(j) += num2;
+					numTimes.at(j) += 1;
 				}
 			}
-			
-
+			else//all other ranges after 0-2000
+			{
+				if(num1 < numSoFar)
+				{
+					
+					this->simulationIncrements.at(j)++;		
+					int num3 = std::rand() % (endRange.at(j) - begRange.at(j)) + begRange.at(j);
+					totalSumForRange.at(j) += num3;			
+					numTimes.at(j) += 1;
+				}
+			}
 		}
-
-		std::cout << "Should be between 0 and 2000: " <<  ((1.00*totalSumForRange.at(0))/numTimes.at(0)) << std::endl;
 		
-		for(int i=0;i<this->numCategories;i++)
-		{	
-			std::cout << ((1.00*totalSumForRange.at(i))/numTimes.at(i)) << std::endl;
+
+	}
+
+//	std::cout << "Should be between 0 and 2000: " <<  ((1.00*totalSumForRange.at(0))/numTimes.at(0)) << std::endl;
+	
+
+	double finalSum = 0;
+
+	for(int i=0;i<this->numCategories;i++)
+	{	
+
+		//std::cout << "Should be between 0 and 2000: " <<  
+		double rangeMean = ((1.00*totalSumForRange.at(i))/numTimes.at(i));
+
+		if(i==0)
+		{
+	//		std::cout << 1.00*numTimes.at(i)/numSimulatedDays << std::endl;
+
+			finalSum += (rangeMean * (1.00*numTimes.at(i)/numSimulatedDays));
+
 		}
+		else
+		{
+	//		std::cout << 1.00*(numTimes.at(i)-numTimes.at(i-1))/numSimulatedDays << std::endl;
+
+			finalSum +=(rangeMean * 1.00*(numTimes.at(i)-numTimes.at(i-1))/numSimulatedDays);
+		}
+		
+	
+	}
 
 
 
-
+	std::cout << "Simulation: " << finalSum << ". Expected value is in the " << leftSide << "-" << rightSide << "/" << dataType << std::endl;
 
 
 }

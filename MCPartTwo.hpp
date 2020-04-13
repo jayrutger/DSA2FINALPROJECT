@@ -16,6 +16,9 @@ class MCPartTwo{
 
 
 	private:
+		std::string dataType;
+		int leftSide;
+		int rightSide;
 		int numSimulatedDays;
 		int numCategories;
 		std::vector <std::string> line;
