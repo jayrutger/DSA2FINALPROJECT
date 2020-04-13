@@ -16,6 +16,8 @@ MCPartTwo::MCPartTwo()
 		line.push_back(l);
 		i++;
 	}
+	this->numSimulatedDays = std::stoi(line.at(0));
+	this->numCategories = std::stoi(line.at(1));
 	for(int i=0;i<line.size();i++)
 	{	
 		if(i==0)
@@ -107,5 +109,66 @@ void MCPartTwo::RunAnalyticalModel()
 	}
 
 	std::cout << "Analytical model:" << finalSum <<  ". Expected value in the " << leftSum << "-" << rightSum << "/" << line.at(line.size()-1) << " range." << std::endl;
+
+}
+
+
+void MCPartTwo::RunSimulationModel()
+{
+
+	std::vector <int> totalSumForRange;
+	std::vector <int> numTimes;
+
+	for(int i=0;i<this->numCategories;i++)
+	{
+		totalSumForRange.push_back(0);
+		simulationIncrements.push_back(0);
+		numTimes.push_back(0);
+	}
+
+		for(int i=0; i<this->numSimulatedDays;i++)
+		{	
+			int numSoFar=0;
+			for(int j=0;j<this->numCategories;j++)
+			{
+				int num1 = std::rand() % 100;
+				numSoFar += numOccurences.at(j);
+				if(j==0)//0-2000
+				{
+					if(num1 >= 0 && num1 < numSoFar)
+					{
+						this->simulationIncrements.at(j)++;
+						int num2 = std::rand() % (endRange.at(j) - begRange.at(j)) + begRange.at(j);
+						totalSumForRange.at(j) += num2;
+						numTimes.at(j) += 1;
+					}
+				}
+				else//all other ranges after 0-2000
+				{
+					if(num1 < numSoFar)
+					{
+						
+						this->simulationIncrements.at(j)++;		
+						int num3 = std::rand() % (endRange.at(j) - begRange.at(j)) + begRange.at(j);
+						totalSumForRange.at(j) += num3;			
+						numTimes.at(j) += 1;
+					}
+				}
+			}
+			
+
+		}
+
+		std::cout << "Should be between 0 and 2000: " <<  ((1.00*totalSumForRange.at(0))/numTimes.at(0)) << std::endl;
+		
+		for(int i=0;i<this->numCategories;i++)
+		{	
+			std::cout << ((1.00*totalSumForRange.at(i))/numTimes.at(i)) << std::endl;
+		}
+
+
+
+
+
 
 }

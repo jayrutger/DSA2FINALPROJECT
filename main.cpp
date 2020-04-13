@@ -117,7 +117,7 @@ int main(){
 
 	MCPartTwo bog;
 	bog.RunAnalyticalModel();
-
+	bog.RunSimulationModel();
 
 
 

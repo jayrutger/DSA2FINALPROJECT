@@ -22,12 +22,13 @@ class MCPartTwo{
 		std::vector <int> numOccurences;
 		std::vector <int> begRange;	
 		std::vector <int> endRange;
-
+		std::vector <int> simulationIncrements;
 
 	public:
 		MCPartTwo();
 		void GetValues();
 		void RunAnalyticalModel();
+		void RunSimulationModel();
 
 
 
