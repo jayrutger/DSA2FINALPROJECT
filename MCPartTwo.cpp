@@ -5,7 +5,7 @@ MCPartTwo::MCPartTwo()
 
 	std::ifstream file("readings.txt");
 
-	std::vector <std::string> line;
+//	std::vector <std::string> line;
 	std::vector <std::string> firsthalf;
 	//std::vector <int> numOccurences;
 
@@ -16,9 +16,47 @@ MCPartTwo::MCPartTwo()
 	while(std::getline(file,l))
 	{
 		line.push_back(l);
-		std::cout << line.at(i) << std::endl;
+	/*	if(i==0)
+		{
+			std::cout << "Simulated Days: ";
+		}
+		else if(i==1)
+		{
+			std::cout << "Number of categories: ";
+		}
+		else if(i==2)
+		{
+			std::cout << "Ranges and occurrences in each range: " << std::endl;
+		}
+		//std::cout << line.at(i) << std::endl;	
+	*/	//std::cout << line.at(i) << std::endl;
 		i++;
-	}	
+	}
+	for(int i=0;i<line.size();i++)
+	{	
+		if(i==0)
+		{
+			std::cout << "Simulated Days: ";
+		}
+		else if(i==1)
+		{
+			std::cout << "Number of categories: ";
+		}
+		else if(i==2)
+		{
+			std::cout << "Ranges and occurrences in each range: " << std::endl;
+		}
+		else if(i==line.size()-1)
+		{
+			std::cout << "Units of measurement: ";
+//			std::cout << line.at(i) << std::endl;
+		}
+		
+			std::cout << line.at(i) << std::endl;
+		
+
+	}
+
 
 //	std::cout << line.at(3);
 
@@ -63,8 +101,6 @@ void MCPartTwo::RunAnalyticalModel()
 	std::vector <double> percentages;
 	double sum = accumulate(numOccurences.begin(),numOccurences.end(),0);
 
-	std::cout << sum << std::endl;
-
 	double finalSum=0;
 
 	for(int i=0;i<this->numOccurences.size();i++)
@@ -72,8 +108,6 @@ void MCPartTwo::RunAnalyticalModel()
 		double perc = numOccurences.at(i)/sum;
 
 		percentages.push_back(perc);
-		std::cout << perc << std::endl;
-
 
 		finalSum += (((begRange.at(i) + endRange.at(i))/2) * perc);
 	}

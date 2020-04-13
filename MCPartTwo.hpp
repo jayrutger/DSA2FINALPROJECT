@@ -17,7 +17,8 @@ class MCPartTwo{
 
 	private:
 		int numSimulatedDays;
-		int numCategories;	
+		int numCategories;
+		std::vector <std::string> line;
 		std::vector <int> numOccurences;
 		std::vector <int> begRange;	
 		std::vector <int> endRange;
